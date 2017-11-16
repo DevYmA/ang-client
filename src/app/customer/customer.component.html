@@ -1,0 +1,28 @@
+<form>
+	
+</form>
+<div class="column is-6 has-text-centered">
+	<label>Name:
+		<input class="input is-primary" placeholder="Enter name" [(ngModel)]="newCustomer.name"> 		
+	</label><br>
+	<label>Address:
+		<input [(ngModel)]="newCustomer.address">		
+	</label><br>
+	<label>Phone:
+		<input [(ngModel)]="newCustomer.phone">	
+	</label><br>	
+	<label>EMail:
+		<input [(ngModel)]="newCustomer.email">
+	</label><br>
+	<button (click)="createCustomer()">{{btnName}}</button>
+</div>
+
+<div>
+	<li *ngFor="let cust of customers">
+		<span>
+			{{cust.name}}		
+		</span>
+		<button (click)="deleteCustomer(cust.customer_id)" >Clear</button>
+		<button (click)="editCustomer(cust)" >Edit</button>
+	</li>	
+</div>

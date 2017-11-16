@@ -17,7 +17,8 @@ export class CustomerComponent implements OnInit {
   customers:Customer[];	
   newCustomer:Customer = new Customer();	
   editingCustomer:Customer = new Customer();
-
+  isValidate:boolean = true;
+  errorName:string;
   constructor(private customerService:CustomerService) { }
 
   ngOnInit() {
@@ -25,12 +26,13 @@ export class CustomerComponent implements OnInit {
   }
 
   createCustomer():void{
-  	console.log(this.newCustomer.name);  	
-  	this.customerService.saveCustomer(this.newCustomer).then(customerList => {
+  	console.log(this.newCustomer.name);
+    this.validateCustoemr();
+  	/*this.customerService.saveCustomer(this.newCustomer).then(customerList => {
   		this.newCustomer = new Customer();
   		this.customers = customerList;
   	});
-  	
+  	*/
   }
 
   getCustomers():void{
@@ -51,5 +53,8 @@ export class CustomerComponent implements OnInit {
   	this.btnName = "Update Customer"
   }
 
+  validateCustoemr(){
+    if(!this.newCustomer.name){this.isValidate = false;this.errorName = "Name"}
+  }
 
 }

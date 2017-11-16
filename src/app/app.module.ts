@@ -9,10 +9,11 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { CustomerComponent } from './customer/customer.component';
 import { ItemComponent } from './item/item.component';
 
-import { CustomerService } from './services/customer.service'  
+import { CustomerService } from './services/customer.service';  
+import { OrdersService } from './services/orders.service'; 
 
-
-import  { appRouters } from '../router'
+import  { appRouters } from '../router';
+import { OrdersComponent } from './orders/orders.component'
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import  { appRouters } from '../router'
     AppComponent,
     NavbarComponent,
     CustomerComponent,
-    ItemComponent
+    ItemComponent,
+    OrdersComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +31,8 @@ import  { appRouters } from '../router'
     RouterModule.forRoot(appRouters)
   ],
   providers: [
-    CustomerService
+    CustomerService,
+    OrdersService
   ],
   bootstrap: [AppComponent]
 })

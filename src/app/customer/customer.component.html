@@ -1,28 +1,42 @@
-<form>
-	
-</form>
-<div class="column is-6 has-text-centered">
-	<label>Name:
-		<input class="input is-primary" placeholder="Enter name" [(ngModel)]="newCustomer.name"> 		
-	</label><br>
-	<label>Address:
-		<input [(ngModel)]="newCustomer.address">		
-	</label><br>
-	<label>Phone:
-		<input [(ngModel)]="newCustomer.phone">	
-	</label><br>	
-	<label>EMail:
-		<input [(ngModel)]="newCustomer.email">
-	</label><br>
-	<button (click)="createCustomer()">{{btnName}}</button>
+<div class="columns is-mobile">
+  <div class="column is-half is-offset-one-quarter">
+  	<div>
+  			<div>
+  				<label>Name:</label>
+				<input type="text" name="name" class="input is-primary" placeholder="Enter name" 
+				[(ngModel)]="newCustomer.name"> 		
+  			</div>
+  			
+  			<div>
+  				<label>Address:</label>
+				<input type="text" name="address" [(ngModel)]="newCustomer.address">						
+  			</div>
+			
+			<div>
+				<label>Phone:</label>
+				<input type="text" name="phone" [(ngModel)]="newCustomer.phone">	
+			</div>
+			
+			<div>
+				<label>E Mail:
+					<input type="email" [(ngModel)]="newCustomer.email">
+				</label>
+			</div>
+			<button type="submit" (click)="createCustomer()">{{btnName}}</button>	
+  	</div>
+  	<div *ngIf="!isValidate">
+		<span>{{errorName}} is required</span>
+	</div>
+  </div>
 </div>
-
 <div>
-	<li *ngFor="let cust of customers">
-		<span>
-			{{cust.name}}		
-		</span>
-		<button (click)="deleteCustomer(cust.customer_id)" >Clear</button>
-		<button (click)="editCustomer(cust)" >Edit</button>
-	</li>	
+	<div>
+		<li *ngFor="let cust of customers">
+			<span>
+				{{cust.name}}		
+			</span>
+			<button (click)="deleteCustomer(cust.customer_id)" >Clear</button>
+			<button (click)="editCustomer(cust)" >Edit</button>
+		</li>	
+	</div>
 </div>
